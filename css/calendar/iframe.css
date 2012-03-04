@@ -1,0 +1,149 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #FFF;
+	padding: 18px;
+}
+
+a {
+	color: #09719D;
+	cursor: pointer;
+}
+a:hover {
+	color: #0FB8FF;
+}
+a.kbd {
+	background-color: #E5E5E5;
+	border-color: #ECECEC #ACACAC #ACACAC #ECECEC;
+	border-style: solid;
+	border-width: 2px;
+	color: #858585;
+	font: normal 12px/18px Arial, sans-serif;
+	margin-right: 6px;
+	padding: 1px 3px;
+}
+a:hover.kbd {
+	background-color: #0FB8FF;
+	border-color: #0FB8FF;
+	color: #FFF;
+}
+
+code {
+	background-color: #E5E5E5;
+	color: #666;
+	display: block;
+	font: normal 10px/14px "Lucida Console", Monaco, monospace;
+	float: left;
+	margin: 9px 0 18px 0;
+	width: 592px;
+	padding: 9px 18px;
+}
+
+em {
+	color: #998000;
+	font-style: normal;
+}
+#main {
+	width:350px;
+	height:auto;
+}
+#main div {
+	clear: both;
+	margin-bottom: 18px;
+	overflow: hidden;
+}
+#main fieldset {
+	border: #E5E5E5 2px solid;
+	clear: both;
+	margin-bottom: 9px;
+	overflow: hidden;
+	padding: 9px 18px;
+}
+#main input.text{
+	border-color: #ACACAC #E1E1E1 #E1E1E1 #ACACAC;
+	border-style: solid;
+	border-width: 2px;
+	float: left;
+	font: normal 12px Arial, sans-serif;
+	margin-right: 6px;
+	width: 100px;
+}
+#main .button{
+	background-color:#0075AF;
+	/* border-color: #B8D4E8 #124680 #124680 #B8D4E8;
+	border-style: solid;
+	border-width: 2px; */
+	font-familt:"宋体";
+	font-size:16px;
+	width:80px;
+	height:25px;
+	cursor:pointer;
+}
+#main select {
+	border-color: #ACACAC #E1E1E1 #E1E1E1 #ACACAC;
+	border-style: solid;
+	border-width: 2px;
+	float: left;
+	font: normal 12px Arial, sans-serif;
+	margin-right: 6px;
+}
+#main.long input, 
+#main.long select {
+	width: 175px;
+}
+#main.short input, 
+#main.short select {
+	width: 75px;
+}
+#main.long input.alternate,
+#main.long select.alternate,
+#main.long input.calendar,
+#main.long select.calendar {
+	width: 149px;
+}
+
+#main.short input.alternate,
+#main.short select.alternate,
+#main.short input.calendar,
+#main.short select.calendar {
+	width: 49px;
+}
+
+#main input {
+	padding: 1px 3px;
+}
+#main label {
+	color: #262626;
+	font: normal 12px/18px Arial, sans-serif;
+	float: left;
+	margin-right: 6px;
+	text-align: right;
+	width: auto;
+}
+#main legend {
+	background: #E5E5E5;
+	color: #262626;
+	font: normal 12px/18px Arial, sans-serif;
+	margin-bottom: 9px;
+	padding: 2px 11px;
+}
+
+h1 {
+	color: #262626;
+	font: normal 14px/18px Arial, sans-serif;
+	margin-bottom: 18px;
+}
+
+p {
+	color: #666;
+	font: normal 12px/18px Arial, sans-serif;
+	margin-bottom: 9px;
+}
+
+strong {
+	color: #262626;
+	font-weight: normal;
+}

@@ -1,0 +1,60 @@
+<script src="js/jquery.js"></script>
+<script>
+var notification = webkitNotifications.createHTMLNotification('notification.html');
+	chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+		if (request.isSearching) {
+			chrome.browserAction.setBadgeText({
+				"text" : "..."
+			});
+		} else {
+			if (request.type == "getAnimatePara") {
+				if (localStorage["isAnimate"] == "checked") {
+					sendResponse({
+						isAnimate : true,
+						isNotice : localStorage["isNotice"],
+						notice_interval : localStorage["notice_interval"],
+						removeAds : localStorage["removeAds"],
+						data : {
+							myname : localStorage["myname"],
+							yourname : localStorage["yourname"],
+							mysex : localStorage["mysex"],
+							yoursex : localStorage["yoursex"],
+							loveday : localStorage["loveday"],
+							lovehour : localStorage["lovehour"]
+						}
+					});
+				} else {
+					sendResponse({
+						isAnimate : false,
+						isNotice : localStorage["isNotice"],
+						notice_interval : localStorage["notice_interval"],
+						removeAds : localStorage["removeAds"],
+						data : null
+					});
+				}
+			}
+			if (request.type == "sendNofitication") {
+				var data = $.parseJSON(request.result);
+				//console.log(data);
+				chrome.browserAction.setBadgeText({
+					"text" : ""+data.length
+				});
+				localStorage["notification"] = request.result;
+				notification.cancel();
+				if(data.length>0){
+					setTimeout(function(){
+						notification = webkitNotifications.createHTMLNotification('notification.html');
+						// 显示通知
+						notification.show();
+					},800);
+				}
+				
+				/* setTimeout(function(){
+					notification.cancel();
+				},5000); */
+				
+			}
+		}
+
+	});
+</script>

@@ -1,0 +1,32 @@
+body {
+	margin: 3;
+	padding: 3;
+	background-color: #F0F5F8;
+}
+
+a {
+	cursor: pointer;
+}
+
+a:hover {
+	color: #005EAC;
+	text-decoration: underline;
+}
+
+p {
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
+}
+
+#copyright {
+	margin-top: 10px;
+	text-align: center;
+	width: 100%;
+	color: #666
+}
+
+#copyright a {
+	color: #666
+}

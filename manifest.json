@@ -1,0 +1,32 @@
+﻿{
+    "name": "人人小插件",
+    "version": "1.0",
+    "description": "阿狸，你还好吗？",
+    "background_page": "background.html",
+    "minimum_chrome_version" : "12.0.0",
+    "update_url": "http://upext.chrome.360.cn/intf.php?method=ExtUpdate.query",
+    "content_scripts": [ //要插入页面的脚本
+			{
+			"matches": ["http://www.renren.com/*", "http://guide.renren.com/*"], //过滤页面
+			"js": ["js/jquery.js","js/jquery.query.js","js/script.js"], //插入的js
+			"run_at":"document_start"//什么时候运行,这里设置成页面加载前运行,以便在页面加载过程中能制造出正在加载的样式
+			}
+		],
+		"permissions": [
+			"notifications",
+   			"tabs",
+   			"http://*.renren.com/*"  
+   			
+  	],
+    "browser_action":   {
+        "default_icon": "icon48.ico",
+        "popup": "popup.html"
+    },
+    "icons":{
+        "128": "icon128.png",
+     	"16": "icon16.ico",
+      	"32": "icon32.ico",
+      	"48": "icon48.ico"
+    }
+    
+}

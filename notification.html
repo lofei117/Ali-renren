@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/notification.css" rel="stylesheet" type="text/css"/>
+<title>Notification</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var result = localStorage["notification"];
+	var data = $.parseJSON(result);
+	var notice = "";
+	$(data).each(function(i){
+		notice += "<p id='__p"+i+"'><img src='images/wall_post.gif'/>"+data[i].content+"</p>";
+	});
+	$("#main").html(notice);
+	$("p").each(function(i){
+		$('#__p'+i+' a:last').click(function(){
+			$.get(data[i].callback, function(){
+				$('#__p'+i).remove();
+			});
+		});
+	});
+});
+</script>
+</head>
+<body>
+<div id="main">
+</div>
+<div id="111"></div>
+<div id="copyright">
+Copyright © 2012 <a href='http://www.renren.com/268259670' target="_blank">lofei</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/calendar/iframe.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/calendar/calendar.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/calendar/dashboard.css" media="screen" />
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/mootools.js" type="text/javascript"></script>
+<script src="js/calendar.rc4.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var myCal1 = new Calendar({ loveday: 'Y-m-d' }, { classes: ['dashboard'], direction: -1, tweak: {x: 3, y: -3} });
+	var i=0;
+	for(i=0;i<24;i++){
+		$("<option/>").val(i).html(i).appendTo("#lovehour");
+	}
+	for(i=5;i<=60;i+=5){
+		$("<option/>").val(i).html(i).appendTo("#notice_interval");
+	}
+	$('#mysex').change(function(){
+		if($(this).val()=="Ali"){
+			$('#yoursex').val("Taozi");
+		}else{
+			$('#yoursex').val("Ali");
+		}
+	});
+	$('#yoursex').change(function(){
+		if($(this).val()=="Ali"){
+			$('#mysex').val("Taozi");
+		}else{
+			$('#mysex').val("Ali");
+		}
+	});
+	$('#isNotice').change(function(){
+		if($(this).attr("checked")=="checked"){
+			$('#notice_interval').attr("disabled",false);
+		}else{
+			$('#notice_interval').attr("disabled","disabled");
+		}
+	});
+	if(localStorage==null || localStorage["myname"]==null){
+		localStorage["myname"]="阿狸";
+		localStorage["yourname"]="桃子";
+		localStorage["mysex"]="Ali";
+		localStorage["yoursex"]="Taozi";
+		localStorage["loveday"]="2010-5-2";
+		localStorage["lovehour"]="8";
+		localStorage["isAnimate"]="checked";
+	}
+	if(localStorage!=null && localStorage.length>0){
+		$('#myname').val(localStorage["myname"]);
+		$('#yourname').val(localStorage["yourname"]);
+		$('#mysex').val(localStorage["mysex"]);
+		$('#yoursex').val(localStorage["yoursex"]);
+		$('#loveday').val(localStorage["loveday"]);
+		$('#lovehour').val(localStorage["lovehour"]);
+		$('#notice_interval').val(localStorage["notice_interval"]);
+		if(localStorage["isAnimate"] == "checked")
+			$('#isAnimate').attr("checked", "checked");
+		if(localStorage["isNotice"] == "checked")
+			$('#isNotice').attr("checked", "checked");
+		else
+			$('#notice_interval').attr("disabled","disabled");
+		if(localStorage["removeAds"] == "checked")
+			$('#removeAds').attr("checked", "checked");
+	}
+	
+});
+function setData(){
+	localStorage["myname"]=$('#myname').val();
+	localStorage["yourname"]=$('#yourname').val();
+	localStorage["mysex"]=$('#mysex').val();
+	localStorage["yoursex"]=$('#yoursex').val();
+	localStorage["loveday"]=$('#loveday').val();
+	localStorage["lovehour"]=$('#lovehour').val();
+	localStorage["notice_interval"]=$('#notice_interval').val();
+	localStorage["isAnimate"]=$('#isAnimate').attr("checked");
+	localStorage["isNotice"]=$('#isNotice').attr("checked");
+	localStorage["removeAds"]=$('#removeAds').attr("checked");
+	alert("设置成功！请刷新人人主页以生效"); 
+}
+</script>
+<title>popup</title>
+</head>
+<body style="background-image:url('images/pop_back.png')">
+	<div id="main">
+		<fieldset>
+			<legend>信息设置：</legend>
+		<p>
+			<label>我的姓名：</label><input class="text" type="text" id="myname" />
+			<label>性别：</label>
+			<select id="mysex">
+				<option	value="Ali">阿狸</option>
+				<option	value="Taozi">桃子</option>
+			</select>
+		<br/><br/>
+			<label>TA的姓名：</label><input class="text" type="text" id="yourname" />
+			<label>性别：</label>
+			<select id="yoursex">
+				<option	value="Ali">阿狸</option>
+				<option	value="Taozi" selected>桃子</option>
+			</select>
+		<br/><br/>
+			<label>相恋时间：</label><input class="text" type="text" id="loveday" name="loveday" />
+			<select id="lovehour">
+			</select>时
+		<br/><br/>
+			<label>开启动画：</label><input type="checkbox" id="isAnimate"/>
+		<br/><br/>
+			<label>桌面提醒：</label><input type="checkbox" id="isNotice"/>
+		<br/><br/>
+			<label>提醒间隔：</label><select id="notice_interval"><option value="1">1</option><option value="3">3</option></select>分钟
+		<br/><br/>
+			<label>屏蔽广告：</label><input type="checkbox" id="removeAds"/>
+		<br/><br/>
+		<button class="button" onclick="setData();">设置</button></p>
+		</fieldset>
+	</div>
+</body>
+</html>
